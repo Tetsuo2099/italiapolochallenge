@@ -1,0 +1,113 @@
+/* Italia Polo Challenge — animation system (scroll reveal + nav) */
+
+[data-anim] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-anim].in {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-anim="img"] {
+  transform: scale(1.04) translateY(20px);
+}
+[data-anim="img"].in {
+  transform: scale(1) translateY(0);
+}
+[data-delay="1"] { transition-delay: 0.07s; }
+[data-delay="2"] { transition-delay: 0.14s; }
+[data-delay="3"] { transition-delay: 0.21s; }
+[data-delay="4"] { transition-delay: 0.28s; }
+[data-delay="5"] { transition-delay: 0.35s; }
+[data-delay="6"] { transition-delay: 0.42s; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-anim] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Mobile nav overlay */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: #131B33;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px;
+  transform: translateY(-100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-overlay.open {
+  transform: translateY(0);
+}
+.nav-overlay a {
+  color: #F6F7F5;
+  font-family: var(--font-display, 'Archivo Expanded'), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(28px, 8vw, 40px);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(246, 247, 245, 0.12);
+  width: 100%;
+}
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  cursor: pointer;
+  z-index: 201;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+.nav-hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 860px) {
+  .nav-hamburger { display: flex; }
+  .nav-links { display: none; }
+}
+
+/* ---------- Logo IPC (header + footer) ---------- */
+.brand img { display: block; height: 58px; width: auto; }
+.footer-brand img { display: block; height: 64px; width: auto; }
+.footer-id { display: flex; align-items: center; gap: 18px; }
+.footer-logo { display: block; height: 34px; width: auto; }
+
+/* ---------- Credito JD Studio ---------- */
+.jd-credit { display: inline-flex; align-items: center; gap: 10px; color: rgba(246,247,245,0.6); text-decoration: none; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; transition: color 0.3s ease; }
+.jd-credit img { display: block; height: 40px; width: auto; opacity: 0.7; transition: opacity 0.3s ease; }
+.jd-credit:hover { color: #fff; }
+.jd-credit:hover img { opacity: 1; }
+
+/* ---------- Loghi sponsor in loop ---------- */
+.marquee { display: flex; overflow: hidden; gap: 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee + .marquee { margin-top: 36px; }
+.marquee-track { display: flex; align-items: center; flex-shrink: 0; gap: 64px; padding-right: 64px; animation: marquee 70s linear infinite; }
+.marquee--reverse .marquee-track { animation-direction: reverse; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-track img { flex-shrink: 0; object-fit: contain; filter: grayscale(1) opacity(0.6); transition: filter 0.3s ease; }
+.marquee-track img:hover { filter: grayscale(0) opacity(1); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+@media (max-width: 700px) {
+  .marquee-track { gap: 40px; padding-right: 40px; animation-duration: 50s; }
+  .brand img { height: 44px; }
+}

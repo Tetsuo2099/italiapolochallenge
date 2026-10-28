@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il Circuito — Italia Polo Challenge</title>
+<meta name="description" content="Le tappe di Italia Polo Challenge: Courmayeur, Cortina, Piazza di Siena, Portocervo. Date, location e storia di ogni edizione.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --snow: #F6F7F5; --ink: #0F1420; --navy: #131B33; --navy-soft: #1B2542;
+    --mist: #B8C4D1;
+    --font-display: 'Jost', sans-serif;
+    --font-h1: 'Jost', sans-serif;
+    --font-body: 'Montserrat', -apple-system, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--snow); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+  .eyebrow { font-weight: 600; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; }
+
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 32px;
+    background: rgba(19, 27, 51, 0.92);
+    backdrop-filter: saturate(180%) blur(14px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .brand { font-family: var(--font-display); font-weight: 800; font-size: 16px; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; text-decoration: none; }
+  .brand span { color: var(--petrol, #1C6E8C); }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid transparent; transition: border-color 0.25s ease, color 0.25s ease; }
+  .nav-links a:hover, .nav-links a.active { color: #fff; border-color: #1C6E8C; }
+  .nav-hamburger { color: #fff; }
+
+  /* ---------- Page intro ---------- */
+  .page-hero {
+    padding: 200px 0 90px;
+    background: var(--navy);
+    color: #fff;
+  }
+  .page-hero h1 {
+    font-family: var(--font-h1); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(44px, 7vw, 88px); line-height: 0.98; letter-spacing: -0.01em;
+  }
+  .page-hero p { margin-top: 24px; max-width: 560px; font-size: 18px; line-height: 1.6; color: rgba(246,247,245,0.78); }
+  .page-hero .eyebrow { color: var(--mist); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .page-hero .eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+
+  /* ---------- Tappa sections ---------- */
+  .tappa {
+    position: relative;
+    scroll-margin-top: 80px;
+  }
+  .tappa-grid {
+    display: grid; grid-template-columns: 1fr 1fr; min-height: 640px;
+  }
+  .tappa:nth-child(even) .tappa-grid { direction: rtl; }
+  .tappa:nth-child(even) .tappa-grid > * { direction: ltr; }
+  .tappa-media { position: relative; overflow: hidden; background: var(--navy); }
+  .tappa-media img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  .tappa-copy {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 72px;
+    background: var(--panel-bg, var(--snow));
+    color: var(--panel-fg, var(--ink));
+  }
+  .tappa-copy .eyebrow { color: var(--accent); margin-bottom: 18px; }
+  .tappa-copy h2 {
+    font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+    font-size: clamp(32px, 4vw, 54px); line-height: 0.98; margin-bottom: 8px;
+  }
+  .tappa-copy .tappa-dates {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 28px;
+  }
+  .tappa-copy .tappa-headline {
+    font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+    font-size: 15px; letter-spacing: 0.03em; line-height: 1.4; margin-bottom: 20px;
+    max-width: 26ch;
+  }
+  .tappa-copy p.body-text { font-size: 16px; line-height: 1.7; opacity: 0.82; max-width: 46ch; }
+  .tappa-copy .tappa-meta { display: flex; gap: 40px; margin-top: 36px; }
+  .tappa-copy .tappa-meta div span { display: block; }
+  .tappa-copy .tappa-meta .meta-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55; margin-bottom: 6px; }
+  .tappa-copy .tappa-meta .meta-value { font-family: var(--font-display); font-weight: 700; font-size: 15px; text-transform: uppercase; }
+  .accent-rule { width: 40px; height: 3px; background: var(--accent); margin-bottom: 24px; }
+
+  /* ---------- Archivio ---------- */
+  .archivio { padding: 130px 0; background: var(--snow); }
+  .archivio .section-head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px; gap: 24px; flex-wrap: wrap;
+  }
+  .archivio .section-head h2 {
+    font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(28px, 3.6vw, 46px); color: var(--navy); line-height: 1.05;
+  }
+  .archivio .eyebrow { color: #1C6E8C; margin-bottom: 14px; display: block; }
+  .archivio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #e4e2dc; }
+  .archivio-card { position: relative; aspect-ratio: 4/3; overflow: hidden; color: #fff; }
+  .archivio-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .archivio-card:hover img { transform: scale(1.06); }
+  .archivio-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(15,20,32,0.05) 40%, rgba(15,20,32,0.88) 100%);
+  }
+  .archivio-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 24px; }
+  .archivio-year {
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(22px, 2.2vw, 30px);
+    text-transform: uppercase; line-height: 1;
+  }
+  .archivio-place { margin-top: 6px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; font-weight: 600; }
+
+  /* ---------- CTA band ---------- */
+  .cta-band {
+    background: var(--ink); color: #fff; text-align: center; padding: 120px 32px;
+  }
+  .cta-band h2 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(26px,3.4vw,42px); margin-bottom: 24px; }
+  .cta-band p { color: var(--mist); max-width: 480px; margin: 0 auto 36px; font-size: 16px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 16px 28px; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease; }
+  .btn-primary { background: #1C6E8C; color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); }
+
+  footer { background: var(--ink); color: rgba(246,247,245,0.6); padding: 60px 0 40px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom a { color: rgba(246,247,245,0.6); text-decoration: none; }
+
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+  @media (max-width: 900px) {
+    .tappa-grid { grid-template-columns: 1fr; }
+    .tappa:nth-child(even) .tappa-grid { direction: ltr; }
+    .tappa-media { height: 60vw; }
+    .tappa-copy { padding: 56px 32px; }
+    .archivio-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .page-hero { padding: 140px 0 60px; }
+    .tappa-copy .tappa-meta { flex-direction: column; gap: 16px; }
+    .archivio-grid { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="stylesheet" href="anim.css?v=2">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand"><img src="assets/loghi/ipc-white.svg" alt="Italia Polo Challenge"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="circuito.html" class="active">Circuito</a></li>
+    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="nav-overlay">
+  <a href="index.html">Home</a>
+  <a href="circuito.html">Circuito</a>
+  <a href="chi-siamo.html">Chi Siamo</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow">Il circuito</div>
+    <h1>Quattro tappe.<br>Un solo trofeo.</h1>
+    <p>Dalla neve del Monte Bianco al mare di Portocervo, passando per il cuore di Roma: ogni tappa di Italia Polo Challenge ha una location, un'identità e una storia diverse — la stessa qualità sportiva.</p>
+  </div>
+</section>
+
+<section class="tappa" id="courmayeur" style="--accent:#1C6E8C; --panel-bg:#131B33; --panel-fg:#ffffff;">
+  <div class="tappa-grid">
+    <div class="tappa-media">
+      <img src="assets/foto/courmayeur/hero-notturna.jpg" alt="Snow polo in notturna a Courmayeur">
+    </div>
+    <div class="tappa-copy">
+      <div class="accent-rule"></div>
+      <div class="eyebrow">Prossima edizione</div>
+      <h2>Courmayeur</h2>
+      <div class="tappa-dates">27&ndash;30 Gennaio 2027</div>
+      <div class="tappa-headline">Tra le vette innevate del Monte Bianco</div>
+      <p class="body-text">Il torneo inaugura la nuova stagione del circuito ai piedi del Monte Bianco. Snow polo in notturna, sul campo innevato: sport, quota e spettacolo, in una delle cornici alpine più scenografiche d'Europa.</p>
+      <div class="tappa-meta">
+        <div><span class="meta-label">Location</span><span class="meta-value">Campo Sportivo ASD</span></div>
+        <div><span class="meta-label">Indirizzo</span><span class="meta-value">Strada Larzey&ndash;Entreves 12</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tappa" id="cortina" style="--accent:#6FA8C9; --panel-bg:#F6F7F5; --panel-fg:#0F1420;">
+  <div class="tappa-grid">
+    <div class="tappa-media">
+      <img src="assets/foto/cortina/match-01.jpg" alt="Snow polo a Cortina d'Ampezzo">
+    </div>
+    <div class="tappa-copy">
+      <div class="accent-rule"></div>
+      <div class="eyebrow">Tappa storica &mdash; Gennaio</div>
+      <h2>Cortina</h2>
+      <div class="tappa-dates">Cortina d'Ampezzo</div>
+      <div class="tappa-headline">Tra montagne e neve, lo snow polo come non l'avete mai visto</div>
+      <p class="body-text">Nella splendida cornice ampezzana è nato lo snow polo del circuito: un test match nel 2020, ripetuto nonostante la pandemia, diventato un vero torneo con squadre da tutto il mondo. Si gioca in notturna sul campo innevato di Fiames, messo a disposizione dal Comune di Cortina.</p>
+      <div class="tappa-meta">
+        <div><span class="meta-label">Location</span><span class="meta-value">Campo Sportivo, Fiames</span></div>
+        <div><span class="meta-label">Formato</span><span class="meta-value">Snow Polo, notturna</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tappa" id="piazza-di-siena" style="--accent:#B5624A; --panel-bg:#131B33; --panel-fg:#ffffff;">
+  <div class="tappa-grid">
+    <div class="tappa-media">
+      <img src="assets/foto/piazzadisiena/match-01.jpg" alt="Arena polo a Piazza di Siena, Roma">
+    </div>
+    <div class="tappa-copy">
+      <div class="accent-rule"></div>
+      <div class="eyebrow">Tappa storica &mdash; Maggio</div>
+      <h2>Piazza di Siena</h2>
+      <div class="tappa-dates">Roma, Villa Borghese</div>
+      <div class="tappa-headline">Tra storia e sport, il polo nella città dei gladiatori</div>
+      <p class="body-text">Palcoscenico naturale da quasi 90 anni dell'equitazione internazionale, Piazza di Siena ospita l'arena polo sul campo in sabbia del Galoppatoio di Villa Borghese. La tradizionale sfilata di giocatori e cavalli attraversa la storica Via dei Condotti, nel cuore della Capitale.</p>
+      <div class="tappa-meta">
+        <div><span class="meta-label">Location</span><span class="meta-value">Galoppatoio, Villa Borghese</span></div>
+        <div><span class="meta-label">Formato</span><span class="meta-value">Arena Polo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tappa" id="portocervo" style="--accent:#2FB79C; --panel-bg:#F6F7F5; --panel-fg:#0F1420;">
+  <div class="tappa-grid">
+    <div class="tappa-media">
+      <img src="assets/foto/portocervo/evento-01.jpg" alt="Arena polo a Portocervo">
+    </div>
+    <div class="tappa-copy">
+      <div class="accent-rule"></div>
+      <div class="eyebrow">Tappa storica &mdash; Luglio</div>
+      <h2>Portocervo</h2>
+      <div class="tappa-dates">Costa Smeralda, Sardegna</div>
+      <div class="tappa-headline">Il profumo del mare. Edizione estiva, e forse più...</div>
+      <p class="body-text">Il grande polo arriva in Sardegna, sul campo Andrea Corda di Abbiadori a due passi da Portocervo. Le sfilate nel centro storico di Arzachena e nella Piazzetta, insieme al Polo Party, costituiscono le attrazioni clou di un'edizione estiva tra sport e glamour.</p>
+      <div class="tappa-meta">
+        <div><span class="meta-label">Location</span><span class="meta-value">Campo Andrea Corda, Abbiadori</span></div>
+        <div><span class="meta-label">Formato</span><span class="meta-value">Arena Polo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="archivio">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Archivio</span>
+        <h2>Le edizioni passate.</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="archivio-grid">
+      <div class="archivio-card">
+        <img src="assets/foto/archivio/cortina-2020.jpg" alt="Cortina 2020">
+        <div class="archivio-body">
+          <div class="archivio-year">Cortina 2020</div>
+          <div class="archivio-place">Il primo snow polo del circuito</div>
+        </div>
+      </div>
+      <div class="archivio-card">
+        <img src="assets/foto/archivio/cortina-2021.jpg" alt="Cortina 2021">
+        <div class="archivio-body">
+          <div class="archivio-year">Cortina 2021</div>
+          <div class="archivio-place">Snow Polo, Fiames</div>
+        </div>
+      </div>
+      <div class="archivio-card">
+        <img src="assets/foto/archivio/cortina-2022.jpg" alt="Cortina 2022">
+        <div class="archivio-body">
+          <div class="archivio-year">Cortina 2022</div>
+          <div class="archivio-place">Snow Polo, Fiames</div>
+        </div>
+      </div>
+      <div class="archivio-card">
+        <img src="assets/foto/archivio/piazzadisiena-2021.jpg" alt="Piazza di Siena 2021">
+        <div class="archivio-body">
+          <div class="archivio-year">Piazza di Siena 2021</div>
+          <div class="archivio-place">Arena Polo, Villa Borghese</div>
+        </div>
+      </div>
+      <div class="archivio-card">
+        <img src="assets/foto/archivio/piazzadisiena-2022.jpg" alt="Piazza di Siena 2022">
+        <div class="archivio-body">
+          <div class="archivio-year">Piazza di Siena 2022</div>
+          <div class="archivio-place">Arena Polo, Villa Borghese</div>
+        </div>
+      </div>
+      <div class="archivio-card">
+        <img src="assets/foto/archivio/portocervo-2022.jpg" alt="Portocervo 2022">
+        <div class="archivio-body">
+          <div class="archivio-year">Portocervo 2022</div>
+          <div class="archivio-place">Costa Smeralda</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Vuoi seguire la prossima tappa?</h2>
+    <p>Contattaci per informazioni su biglietti, hospitality e partnership.</p>
+    <a href="contatti.html" class="btn btn-primary">Contattaci</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-bottom">
+    <div class="footer-id"><a href="index.html"><img class="footer-logo" src="assets/loghi/ipc-white.svg" alt="Italia Polo Challenge"></a><span>© 2026 Italia Polo Challenge — The Chukker Company</span></div>
+    <a class="jd-credit" href="https://juridabiankov.com/" target="_blank" rel="noopener"><span>Design</span><img src="assets/loghi/jd-studio-white.png" alt="JD Studio"></a>
+  </div>
+</footer>
+
+<script src="anim.js?v=1"></script>
+</body>
+</html>

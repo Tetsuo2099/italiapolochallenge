@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi Siamo — Italia Polo Challenge</title>
+<meta name="description" content="The Chukker Company: chi organizza Italia Polo Challenge, il circuito italiano di polo. Patrocinio FISE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --snow: #F6F7F5; --ink: #0F1420; --navy: #131B33; --petrol: #1C6E8C; --mist: #B8C4D1;
+    --font-display: 'Jost', sans-serif;
+    --font-h1: 'Jost', sans-serif;
+    --font-body: 'Montserrat', -apple-system, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--snow); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+  .eyebrow { font-weight: 600; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; }
+
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 32px;
+    background: rgba(19, 27, 51, 0.92);
+    backdrop-filter: saturate(180%) blur(14px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .brand { font-family: var(--font-display); font-weight: 800; font-size: 16px; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; text-decoration: none; }
+  .brand span { color: var(--petrol); }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid transparent; transition: border-color 0.25s ease, color 0.25s ease; }
+  .nav-links a:hover, .nav-links a.active { color: #fff; border-color: var(--petrol); }
+
+  .page-hero { padding: 200px 0 90px; background: var(--navy); color: #fff; }
+  .page-hero h1 { font-family: var(--font-h1); font-weight: 700; text-transform: uppercase; font-size: clamp(44px, 7vw, 84px); line-height: 0.98; letter-spacing: -0.01em; max-width: 900px; }
+  .page-hero p { margin-top: 24px; max-width: 580px; font-size: 18px; line-height: 1.6; color: rgba(246,247,245,0.78); }
+  .page-hero .eyebrow { color: var(--mist); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .page-hero .eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+
+  .mission { padding: 120px 0; }
+  .mission-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; }
+  .mission h2 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.08; color: var(--navy); }
+  .mission-body p { font-size: 18px; line-height: 1.65; color: #3a3f4d; }
+  .mission-body p + p { margin-top: 20px; }
+  .mission-body strong { color: var(--ink); font-weight: 600; }
+
+  .founders { background: var(--navy); padding: 110px 0; color: #fff; }
+  .founders .section-label { color: var(--petrol); margin-bottom: 48px; display: block; }
+  .founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,0.08); }
+  .founder-card { background: var(--navy); padding: 48px; }
+  .founder-photo { display: block; width: 140px; height: 140px; border-radius: 50%; margin-bottom: 28px; }
+  .founder-role { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--petrol); margin-bottom: 14px; }
+  .founder-name { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(24px,2.6vw,32px); margin-bottom: 18px; }
+  .founder-bio { font-size: 15px; line-height: 1.7; color: rgba(246,247,245,0.72); max-width: 42ch; }
+
+  .patrocinio { padding: 110px 0; text-align: center; }
+  .patrocinio .eyebrow { color: var(--petrol); }
+  .patrocinio h2 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(24px,3vw,36px); margin: 18px 0 20px; color: var(--navy); }
+  .patrocinio p { max-width: 560px; margin: 0 auto; font-size: 16px; line-height: 1.7; color: #3a3f4d; }
+  .patrocinio-mark { margin-top: 40px; font-family: var(--font-display); font-weight: 800; letter-spacing: 0.04em; font-size: 20px; color: var(--navy); text-transform: uppercase; }
+
+  .stats { background: var(--ink); padding: 80px 0; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+  .stat-num { font-family: var(--font-display); font-weight: 800; font-size: clamp(32px, 3.6vw, 52px); color: #fff; line-height: 1; }
+  .stat-label { margin-top: 10px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist); font-weight: 600; }
+
+  .cta-band { background: var(--navy); color: #fff; text-align: center; padding: 120px 32px; }
+  .cta-band h2 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(26px,3.4vw,42px); margin-bottom: 24px; }
+  .cta-band p { color: var(--mist); max-width: 480px; margin: 0 auto 36px; font-size: 16px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 16px 28px; text-decoration: none; transition: transform 0.25s ease; }
+  .btn-primary { background: var(--petrol); color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); }
+
+  footer { background: var(--ink); color: rgba(246,247,245,0.6); padding: 60px 0 40px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom a { color: rgba(246,247,245,0.6); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .mission-grid { grid-template-columns: 1fr; gap: 32px; }
+    .founders-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+  }
+  .nav-hamburger { color: #fff; }
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+  @media (max-width: 560px) { .page-hero { padding: 140px 0 60px; } }
+</style>
+<link rel="stylesheet" href="anim.css?v=2">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand"><img src="assets/loghi/ipc-white.svg" alt="Italia Polo Challenge"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="circuito.html">Circuito</a></li>
+    <li><a href="chi-siamo.html" class="active">Chi Siamo</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="nav-overlay">
+  <a href="index.html">Home</a>
+  <a href="circuito.html">Circuito</a>
+  <a href="chi-siamo.html">Chi Siamo</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow">Chi siamo</div>
+    <h1>Il polo, fuori<br>dal campo.</h1>
+    <p>Italia Polo Challenge è organizzato da The Chukker Company, con il patrocinio della Federazione Italiana Sport Equestri.</p>
+  </div>
+</section>
+
+<section class="mission">
+  <div class="container mission-grid">
+    <h2>Sport, luogo,<br>spettacolo.</h2>
+    <div class="mission-body">
+      <p><strong>The Chukker Company</strong> nasce per portare il polo fuori dal campo tradizionale: sulla neve, in città, davanti al mare. Ogni tappa di Italia Polo Challenge è pensata come un evento a sé — location iconiche, squadre internazionali di altissimo livello tecnico, un pubblico che unisce appassionati di sport e curiosi del mondo del lusso.</p>
+      <p>Il circuito lavora sotto il patrocinio della <strong>Federazione Italiana Sport Equestri</strong> e nel tempo ha costruito un piano di comunicazione strutturato in tre fasi — dalla creazione dell'attesa, alla copertura in diretta, fino alla rassegna stampa post-evento — con centinaia di uscite editoriali per ogni tappa.</p>
+    </div>
+  </div>
+</section>
+
+<section class="founders">
+  <div class="container">
+    <span class="eyebrow section-label">Il team</span>
+    <div class="founders-grid">
+      <div class="founder-card">
+        <img class="founder-photo" src="assets/foto/team/adriano-motta.png" alt="Adriano Motta" width="140" height="140">
+        <div class="founder-role">CEO &amp; Founder</div>
+        <div class="founder-name">Adriano Motta</div>
+        <p class="founder-bio">Fondatore di The Chukker Company, guida la visione del circuito: dalla scelta delle location alla costruzione delle partnership che rendono possibile ogni tappa.</p>
+      </div>
+      <div class="founder-card">
+        <img class="founder-photo" src="assets/foto/team/patricio-rattagan.png" alt="Patricio Rattagan" width="140" height="140">
+        <div class="founder-role">Sport Director</div>
+        <div class="founder-name">Patricio Rattagan</div>
+        <p class="founder-bio">Responsabile sportivo del circuito: selezione delle squadre, standard tecnici e organizzazione in campo di ogni torneo, dalla neve alla sabbia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="patrocinio">
+  <div class="container">
+    <span class="eyebrow">Patrocinio</span>
+    <h2>Federazione Italiana<br>Sport Equestri</h2>
+    <p>Italia Polo Challenge si svolge sotto il patrocinio della FISE, a garanzia degli standard tecnici e sportivi di ogni tappa del circuito — e con l'obiettivo, a lungo termine, di riportare il polo su neve tra gli sport delle Olimpiadi Invernali.</p>
+    <div class="patrocinio-mark">FISE</div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stats-grid">
+    <div><div class="stat-num">4&ndash;6</div><div class="stat-label">Squadre in gara</div></div>
+    <div><div class="stat-num">18</div><div class="stat-label">Giocatori professionisti</div></div>
+    <div><div class="stat-num">60+</div><div class="stat-label">Cavalli per torneo</div></div>
+    <div><div class="stat-num">3000+</div><div class="stat-label">Spettatori a tappa</div></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Partner, sponsor, stampa?</h2>
+    <p>Scrivici per informazioni su partnership, hospitality e materiali stampa.</p>
+    <a href="contatti.html" class="btn btn-primary">Contattaci</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-bottom">
+    <div class="footer-id"><a href="index.html"><img class="footer-logo" src="assets/loghi/ipc-white.svg" alt="Italia Polo Challenge"></a><span>© 2026 Italia Polo Challenge — The Chukker Company</span></div>
+    <a class="jd-credit" href="https://juridabiankov.com/" target="_blank" rel="noopener"><span>Design</span><img src="assets/loghi/jd-studio-white.png" alt="JD Studio"></a>
+  </div>
+</footer>
+
+<script src="anim.js?v=1"></script>
+</body>
+</html>
