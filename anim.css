@@ -89,8 +89,10 @@
 /* ---------- Logo IPC (header + footer) ---------- */
 .brand img { display: block; height: 58px; width: auto; }
 .footer-brand img { display: block; height: 64px; width: auto; }
-.footer-id { display: flex; align-items: center; gap: 18px; }
-.footer-logo { display: block; height: 34px; width: auto; }
+.footer-id { display: flex; align-items: center; gap: 20px; }
+.footer-logo { display: block; height: 46px; width: auto; }
+.footer-id span { padding: 6px 0 6px 20px; margin-top: 12px; border-left: 1px solid rgba(255,255,255,0.18); }
+.footer-id ~ .jd-credit { margin-top: 12px; }
 
 /* ---------- Credito JD Studio ---------- */
 .jd-credit { display: inline-flex; align-items: center; gap: 10px; color: rgba(246,247,245,0.6); text-decoration: none; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; transition: color 0.3s ease; }
