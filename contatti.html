@@ -74,6 +74,10 @@
     padding: 16px 32px; cursor: pointer; transition: transform 0.25s ease, background 0.25s ease;
   }
   .submit-btn:hover { transform: translateY(-2px); background: #21809f; }
+  .submit-btn:disabled { opacity: 0.6; cursor: default; transform: none; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .form-status { margin-top: 18px; font-size: 14px; color: #3a3f4d; min-height: 1em; }
+  .form-status.error { color: #b5403a; }
 
   footer { background: var(--ink); color: rgba(246,247,245,0.6); padding: 40px 64px; }
   .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 12px; max-width: 1240px; margin: 0 auto; }
@@ -135,7 +139,11 @@
 
   <div class="contact-form">
     <h2>Scrivici</h2>
-    <form onsubmit="event.preventDefault(); this.reset(); alert('Grazie, ti risponderemo a breve.');">
+    <!-- Invio via FormSubmit (formsubmit.co) → info@thechukkercompany.com -->
+    <form id="contact-form" action="https://formsubmit.co/info@thechukkercompany.com" method="POST">
+      <input type="hidden" name="_subject" value="Nuovo contatto dal sito Italia Polo Challenge">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="field">
         <label for="nome">Nome e cognome</label>
         <input type="text" id="nome" name="nome" required>
@@ -158,6 +166,7 @@
         <textarea id="messaggio" name="messaggio" required></textarea>
       </div>
       <button type="submit" class="submit-btn">Invia richiesta</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
     </form>
   </div>
 </div>
@@ -170,5 +179,35 @@
 </footer>
 
 <script src="anim.js?v=1"></script>
+<script>
+  // Invio AJAX: resta sulla pagina; senza JS il form fa un POST normale a FormSubmit
+  (function () {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    var status = form.querySelector('.form-status');
+    var btn = form.querySelector('.submit-btn');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      btn.disabled = true;
+      status.className = 'form-status';
+      status.textContent = 'Invio in corso…';
+      fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      })
+        .then(function (r) { return r.json().then(function (d) { if (!r.ok || d.success === 'false' || d.success === false) throw d; }); })
+        .then(function () {
+          form.reset();
+          status.textContent = 'Grazie, ti risponderemo a breve.';
+        })
+        .catch(function () {
+          status.className = 'form-status error';
+          status.innerHTML = 'Invio non riuscito. Scrivici a <a href="mailto:info@thechukkercompany.com">info@thechukkercompany.com</a>.';
+        })
+        .finally(function () { btn.disabled = false; });
+    });
+  })();
+</script>
 </body>
 </html>
