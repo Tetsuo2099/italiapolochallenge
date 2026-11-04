@@ -1,0 +1,22 @@
+:root{--bg:#1b2150;--fg:#f5f1e8;--accent:#c8a96a;--line:rgba(245,241,232,.18)}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:32px 20px}
+.card{width:100%;max-width:420px;text-align:center}
+.logos{display:flex;justify-content:center;align-items:center;gap:22px;margin-bottom:36px}
+.logos img{height:64px;max-width:42%;object-fit:contain}
+.logos .sep{width:1px;height:40px;background:var(--line)}
+.monogramma{width:112px;height:112px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;border:2px solid var(--accent);font-size:2rem;font-weight:600;letter-spacing:.05em;color:var(--accent);overflow:hidden}
+.monogramma img{width:100%;height:100%;object-fit:cover}
+h1{font-weight:600;font-size:1.75rem;margin-top:18px}
+.ruolo{color:var(--accent);text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;margin-top:8px}
+.aziende{opacity:.7;font-size:.9rem;margin-top:6px}
+.btn{display:block;margin:28px 0 20px;padding:16px;background:var(--accent);color:var(--bg);font-weight:600;text-decoration:none;border-radius:999px;letter-spacing:.03em}
+.contatti{list-style:none;padding:0;display:grid;gap:10px}
+.contatti a{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border:1px solid var(--line);border-radius:12px;color:var(--fg);text-decoration:none;font-size:.92rem}
+.contatti a span{opacity:.55;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em}
+.contatti a:active{background:rgba(200,169,106,.12)}
+footer{margin-top:28px;font-size:.72rem;opacity:.45;line-height:1.6}
+.contatti a{gap:12px;text-align:left}
+.contatti a span{flex-shrink:0}
+.contatti a.mail{font-size:.8rem;overflow-wrap:normal}
+.logos img.chukker{height:84px}
