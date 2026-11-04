@@ -10,6 +10,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/card.css">
+<style>
+.hint{display:none;margin:-8px 0 20px;padding:14px 16px;border-radius:12px;font-size:.82rem;line-height:1.5;text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)}
+.hint.on{display:block}
+.hint b{font-weight:600}
+</style>
 </head>
 <body>
 <main class="card">
@@ -23,7 +28,9 @@
   <p class="ruolo">CEO & Founder</p>
   <p class="aziende">The Chukker Company · Italia Polo Challenge</p>
 
-  <a class="btn" href="adriano-motta.vcf" download>Aggiungi ai contatti</a>
+  <a class="btn" href="adriano-motta.vcf" type="text/vcard" download="adriano-motta.vcf">Aggiungi ai contatti</a>
+
+  <p class="hint" id="hint"><b>Su Android:</b> il contatto è stato scaricato. Tocca <b>Apri</b> nella barra in basso, oppure apri il file dalle notifiche o da <b>Download</b>, e scegli <b>Contatti</b> per salvarlo.</p>
 
   <ul class="contatti">
     <li><a href="tel:+393490677120">+39 349 067 7120<span>Chiama</span></a></li>
@@ -34,5 +41,13 @@
   </ul>
   <footer>The Chukker Company S.r.l.<br>Via Francesco Carrara 24, 00196 Roma</footer>
 </main>
+
+<script>
+(function(){
+  var btn=document.querySelector('.btn'), hint=document.getElementById('hint');
+  if(!/android/i.test(navigator.userAgent)) return;
+  btn.addEventListener('click',function(){ setTimeout(function(){ hint.classList.add('on'); },400); });
+})();
+</script>
 </body>
 </html>
