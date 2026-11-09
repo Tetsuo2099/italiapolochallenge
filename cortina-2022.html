@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cortina 2022 — Italia Polo Challenge</title>
+<meta name="description" content="Italia Polo Challenge Cortina 2022: il primo torneo di snow polo a Fiames. Classifica, risultati, squadre e foto.">
+<meta property="og:title" content="Cortina 2022 — Italia Polo Challenge">
+<meta property="og:description" content="Snow polo in notturna a Cortina d’Ampezzo, 6–8 gennaio 2022. Campioni: U.S. Polo Assn.">
+<meta property="og:image" content="https://italiapolochallenge.it/assets/foto/archivio/cortina-2022/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --snow: #F6F7F5; --ink: #0F1420; --navy: #131B33; --navy-soft: #1B2542;
+    --mist: #B8C4D1;
+    --accent: #6FA8C9;
+    --font-display: 'Jost', sans-serif;
+    --font-h1: 'Jost', sans-serif;
+    --font-body: 'Montserrat', -apple-system, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--snow); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+  .eyebrow { font-weight: 600; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; }
+
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 32px;
+    background: rgba(19, 27, 51, 0.92);
+    backdrop-filter: saturate(180%) blur(14px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .brand { font-family: var(--font-display); font-weight: 800; font-size: 16px; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; text-decoration: none; }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid transparent; transition: border-color 0.25s ease, color 0.25s ease; }
+  .nav-links a:hover, .nav-links a.active { color: #fff; border-color: #1C6E8C; }
+  .nav-hamburger { color: #fff; }
+
+  /* ---------- Hero video ---------- */
+  .ed-hero { position: relative; min-height: min(92vh, 980px); display: flex; align-items: flex-end; color: #fff; background: var(--navy); overflow: hidden; }
+  .ed-hero video, .ed-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ed-hero::after { content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(19,27,51,0.55) 0%, rgba(19,27,51,0.15) 35%, rgba(19,27,51,0.55) 70%, rgba(15,20,32,0.95) 100%); }
+  .ed-hero .container { position: relative; z-index: 2; width: 100%; padding-bottom: 80px; }
+  .back { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist); text-decoration: none; margin-bottom: 28px; }
+  .back:hover { color: #fff; }
+  .ed-hero .eyebrow { color: var(--accent); display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .ed-hero .eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+  .ed-hero h1 { font-family: var(--font-h1); font-weight: 800; text-transform: uppercase; font-size: clamp(48px, 9vw, 120px); line-height: 0.92; letter-spacing: -0.01em; }
+  .ed-hero .sub { margin-top: 22px; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,247,245,0.85); }
+
+  /* ---------- Intro + numeri ---------- */
+  .intro { padding: 120px 0 100px; }
+  .intro-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: start; }
+  .intro h2 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(28px, 3.6vw, 46px); line-height: 1.05; color: var(--navy); }
+  .intro p { font-size: 17px; line-height: 1.75; color: rgba(15,20,32,0.8); }
+  .intro p + p { margin-top: 18px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 80px; border-top: 1px solid #dcdad3; }
+  .stat { padding: 28px 0 0; }
+  .stat-num { font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 5vw, 64px); line-height: 1; color: var(--navy); }
+  .stat-label { margin-top: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b7280; }
+
+  /* ---------- Campioni ---------- */
+  .champ { display: grid; grid-template-columns: 1fr 1fr; background: var(--navy); color: #fff; min-height: 620px; }
+  .champ-media { position: relative; overflow: hidden; }
+  .champ-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  .champ-copy { padding: 90px 72px; display: flex; flex-direction: column; justify-content: center; }
+  .champ-copy .eyebrow { color: var(--accent); margin-bottom: 18px; }
+  .champ-copy h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(40px, 5.4vw, 76px); line-height: 0.95; }
+  .champ-copy .champ-logo { height: 64px; width: auto; align-self: flex-start; margin: 30px 0 34px; }
+  .champ-copy p { font-size: 16px; line-height: 1.7; color: rgba(246,247,245,0.78); max-width: 44ch; }
+  .accent-rule { width: 40px; height: 3px; background: var(--accent); margin-bottom: 24px; }
+
+  .champ.solo { grid-template-columns: 1fr; min-height: 0; }
+  .champ.solo .champ-copy { max-width: 1240px; margin: 0 auto; width: 100%; padding: 100px 32px; }
+  .ed-hero.noimg { min-height: min(64vh, 640px); background: radial-gradient(120% 90% at 85% 10%, color-mix(in srgb, var(--accent) 38%, var(--navy)) 0%, var(--navy) 60%); }
+  .match-row.draw .t, .match-row.draw .s { color: var(--navy); }
+  .team-card.span { grid-column: 1 / -1; }
+
+  /* ---------- Classifica + risultati ---------- */
+  .section { padding: 120px 0; }
+  .section-head { margin-bottom: 48px; }
+  .section-head .eyebrow { color: var(--accent); display: block; margin-bottom: 14px; }
+  .section-head h2 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(28px, 3.6vw, 46px); line-height: 1.05; color: var(--navy); }
+  .dark { background: var(--ink); color: #fff; }
+  .dark .section-head h2 { color: #fff; }
+
+  .standings { width: 100%; border-collapse: collapse; }
+  .standings th { text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mist); padding: 0 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .standings th.n, .standings td.n { text-align: center; width: 90px; }
+  .standings td { padding: 22px 12px; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: middle; }
+  .standings .pos { font-family: var(--font-display); font-weight: 800; font-size: 34px; color: var(--accent); width: 70px; }
+  .team { display: flex; align-items: center; gap: 22px; }
+  .team .logos { width: 150px; display: flex; align-items: center; gap: 10px; }
+  .team .logos img { max-height: 44px; max-width: 140px; width: auto; }
+  .team .logos.two img { max-height: 30px; max-width: 70px; }
+  .team .name { font-family: var(--font-display); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em; }
+  .standings td.n { font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+  .standings tr:first-child td { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+
+  .days { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 2px; background: #dcdad3; margin-top: 0; }
+  .day { background: var(--snow); padding: 40px 36px 36px; }
+  .day-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
+  .day-num { font-family: var(--font-display); font-weight: 800; font-size: 54px; line-height: 0.9; color: var(--accent); }
+  .day-name { font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); }
+  .day-name small { display: block; font-weight: 500; font-size: 11px; letter-spacing: 0.2em; color: #6b7280; margin-top: 4px; }
+  .match { padding: 18px 0; border-top: 1px solid #e4e2dc; }
+  .match-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b7280; margin-bottom: 10px; }
+  .match-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; font-family: var(--font-display); text-transform: uppercase; }
+  .match-row .t { font-weight: 600; font-size: 17px; color: rgba(15,20,32,0.55); }
+  .match-row .s { font-weight: 800; font-size: 26px; color: rgba(15,20,32,0.55); min-width: 36px; text-align: right; }
+  .match-row.win .t, .match-row.win .s { color: var(--navy); font-weight: 800; }
+
+  /* ---------- Squadre ---------- */
+  .teams { display: grid; grid-template-columns: repeat(var(--cols, 4), 1fr); gap: 2px; background: rgba(255,255,255,0.1); }
+  .team-card { background: var(--navy-soft); padding: 36px 30px 32px; }
+  .team-card .tl { height: 64px; display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+  .team-card .tl img { max-height: 56px; max-width: 170px; width: auto; }
+  .team-card .tl.two img { max-height: 38px; max-width: 90px; }
+  .team-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; text-transform: uppercase; }
+  .team-card .hcp { margin-top: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+  .team-card ul { list-style: none; margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .team-card li { display: flex; justify-content: space-between; gap: 10px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 14px; font-weight: 500; }
+  .team-card li span { color: var(--mist); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; white-space: nowrap; }
+  .team-card li em { font-style: normal; display: inline-block; margin-left: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--ink); background: var(--mist); padding: 2px 5px; vertical-align: 1px; }
+  .team-card li em.mvp { background: var(--accent); }
+  .legend { margin-top: 22px; font-size: 12px; color: var(--mist); letter-spacing: 0.04em; }
+  .legend em { font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--ink); background: var(--mist); padding: 2px 5px; margin-right: 6px; }
+  .legend em.mvp { background: var(--accent); margin-left: 18px; }
+  .mvp-line { margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+  .mvp-line b { display: block; margin-top: 8px; font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: 0.01em; color: #fff; }
+
+  /* ---------- Galleria ---------- */
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: #dcdad3; }
+  .gallery button { position: relative; aspect-ratio: 4/5; overflow: hidden; border: 0; padding: 0; cursor: zoom-in; background: var(--navy); }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+  .gallery button:hover img { transform: scale(1.05); }
+  .lightbox { position: fixed; inset: 0; z-index: 300; background: rgba(15,20,32,0.96); display: none; align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 88vh; width: auto; height: auto; }
+  .lb-btn { position: absolute; background: none; border: 0; color: #fff; font-size: 40px; line-height: 1; cursor: pointer; padding: 18px; opacity: 0.8; font-family: var(--font-body); }
+  .lb-btn:hover { opacity: 1; }
+  .lb-close { top: 10px; right: 14px; font-size: 34px; }
+  .lb-prev { left: 8px; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 8px; top: 50%; transform: translateY(-50%); }
+  .lb-count { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; font-size: 12px; letter-spacing: 0.2em; color: var(--mist); }
+
+  /* ---------- Aftermovie ---------- */
+  .film video { width: 100%; height: auto; display: block; background: #000; }
+  .film .note { margin-top: 16px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist); }
+
+  /* ---------- Partner ---------- */
+  .partners { display: grid; grid-template-columns: repeat(6, 1fr); align-items: center; justify-items: center; row-gap: 48px; column-gap: 24px; }
+  .partners img { width: auto; opacity: 0.9; }
+
+  .cta-band { background: var(--navy); color: #fff; text-align: center; padding: 110px 32px; }
+  .cta-band h2 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(26px,3.4vw,42px); margin-bottom: 24px; }
+  .cta-band p { color: var(--mist); max-width: 480px; margin: 0 auto 36px; font-size: 16px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 16px 28px; text-decoration: none; transition: transform 0.25s ease; }
+  .btn-primary { background: #1C6E8C; color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.4); color: #fff; margin-left: 12px; }
+
+  footer { background: var(--ink); color: rgba(246,247,245,0.6); padding: 60px 0 40px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom a { color: rgba(246,247,245,0.6); text-decoration: none; }
+
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+  @media (max-width: 960px) {
+    .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+    .champ { grid-template-columns: 1fr; }
+    .champ-media { height: 90vw; max-height: 620px; }
+    .champ-copy { padding: 60px 32px; }
+    .days { grid-template-columns: 1fr; }
+    .teams { grid-template-columns: repeat(2, 1fr); }
+    .champ.solo .champ-copy { padding: 60px 32px; }
+    .gallery { grid-template-columns: repeat(3, 1fr); }
+    .partners { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .container { padding: 0 20px; }
+    .ed-hero { min-height: min(78vh, 760px); }
+    .stats { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
+    .standings th.hide, .standings td.hide { display: none; }
+    .standings .pos { width: 40px; font-size: 26px; }
+    .team { gap: 12px; }
+    .team .logos { display: none; }
+    .team .name { font-size: 16px; }
+    .standings th.n, .standings td.n { width: 52px; }
+    .teams { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .partners { grid-template-columns: repeat(3, 1fr); row-gap: 36px; }
+    .btn-ghost { margin: 12px 0 0; }
+  }
+</style>
+<link rel="stylesheet" href="anim.css?v=3">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand"><img src="assets/loghi/ipc-white.svg" alt="Italia Polo Challenge"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="circuito.html" class="active">Circuito</a></li>
+    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="nav-overlay">
+  <a href="index.html">Home</a>
+  <a href="circuito.html">Circuito</a>
+  <a href="chi-siamo.html">Chi Siamo</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<section class="ed-hero">
+  <img src="assets/foto/archivio/cortina-2022/hero.jpg" alt="Cortina 2022, una fase di gioco">
+  <div class="container">
+    <a class="back" href="circuito.html#archivio">&larr; Archivio edizioni</a>
+    <div class="eyebrow">Archivio &middot; Edizione 2022</div>
+    <h1>Cortina<br>2022</h1>
+    <div class="sub">Cortina d&rsquo;Ampezzo &middot; Snow polo &middot; 6&ndash;8 gennaio 2022</div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <h2 data-anim>Da test match a torneo.</h2>
+      <div data-anim>
+        <p>Dopo due edizioni con una sola partita, nel 2022 lo snow polo di Cortina diventa un torneo vero e proprio: quattro squadre, dodici giocatori da tutta Europa e dall&rsquo;Argentina, tre serate di gioco sotto i riflettori del Centro Sportivo di Fiames. Per preparare il campo il Comune di Cortina d&rsquo;Ampezzo ha portato fino a cinquanta camion di neve.</p>
+        <p>Le squadre partono con il vantaggio dell&rsquo;handicap, da qui i mezzi gol nei punteggi. In finale U.S. Polo Assn. supera Goldspan 14&ndash;11,5 con Clement Delfosse e Patrick Maleitzke protagonisti; terzo posto per Battistoni. Miglior cavallo del torneo La Cantinera, della scuderia di Maleitzke.</p>
+      </div>
+    </div>
+    <div class="stats" data-anim>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Squadre</div></div>
+      <div class="stat"><div class="stat-num">12</div><div class="stat-label">Giocatori</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Partite</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Serate</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="champ">
+  <div class="champ-media"><img src="assets/foto/archivio/cortina-2022/champ.jpg" alt="U.S. Polo Assn. festeggia la vittoria di Cortina 2022" loading="lazy"></div>
+  <div class="champ-copy" data-anim>
+    <div class="accent-rule"></div>
+    <div class="eyebrow">Campioni 2022</div>
+    <h2>U.S. Polo Assn.</h2>
+    <p style="margin-top:30px">9&ndash;7,5 su Hotel de la Poste, 11&ndash;8,5 su Battistoni e la finale vinta 14&ndash;11,5 contro Goldspan. In campo il capitano Daniel Deistler, Clement Delfosse e Patrick Maleitzke.</p>
+    <div class="mvp-line">Miglior cavallo del torneo<b>La Cantinera</b></div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="container">
+    <div class="section-head" data-anim>
+      <span class="eyebrow">Classifica finale</span>
+      <h2>Il torneo.</h2>
+    </div>
+    <table class="standings" data-anim>
+      <thead><tr><th></th><th>Squadra</th><th class="n">V</th><th class="n hide">GF</th><th class="n hide">GS</th><th class="n">DR</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">1</td><td><div class="team"><span class="name">U.S. Polo Assn.</span></div></td><td class="n">3</td><td class="n hide">34</td><td class="n hide">27,5</td><td class="n">+6,5</td></tr>
+        <tr><td class="pos">2</td><td><div class="team"><span class="name">Goldspan</span></div></td><td class="n">2</td><td class="n hide">27,5</td><td class="n hide">26</td><td class="n">+1,5</td></tr>
+        <tr><td class="pos">3</td><td><div class="team"><span class="name">Battistoni</span></div></td><td class="n">1</td><td class="n hide">23</td><td class="n hide">25</td><td class="n">&minus;2</td></tr>
+        <tr><td class="pos">4</td><td><div class="team"><span class="name">Hotel de la Poste</span></div></td><td class="n">0</td><td class="n hide">19</td><td class="n hide">25</td><td class="n">&minus;6</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head" data-anim>
+      <span class="eyebrow">Risultati</span>
+      <h2>Partita per partita.</h2>
+    </div>
+  </div>
+  <div class="container">
+    <div class="days" data-anim>
+      <div class="day">
+        <div class="day-head"><span class="day-num">06</span><span class="day-name">Gioved&igrave;<small>Gennaio 2022</small></span></div>
+        <div class="match"><div class="match-tag">Match 1</div>
+          <div class="match-row win"><span class="t">Goldspan</span><span class="s">8</span></div>
+          <div class="match-row "><span class="t">Battistoni</span><span class="s">6,5</span></div></div>
+        <div class="match"><div class="match-tag">Match 2</div>
+          <div class="match-row win"><span class="t">U.S. Polo Assn.</span><span class="s">9</span></div>
+          <div class="match-row "><span class="t">Hotel de la Poste</span><span class="s">7,5</span></div></div>
+      </div>
+      <div class="day">
+        <div class="day-head"><span class="day-num">07</span><span class="day-name">Venerd&igrave;<small>Gennaio 2022</small></span></div>
+        <div class="match"><div class="match-tag">Semifinale</div>
+          <div class="match-row win"><span class="t">U.S. Polo Assn.</span><span class="s">11</span></div>
+          <div class="match-row "><span class="t">Battistoni</span><span class="s">8,5</span></div></div>
+        <div class="match"><div class="match-tag">Semifinale</div>
+          <div class="match-row win"><span class="t">Goldspan</span><span class="s">8</span></div>
+          <div class="match-row "><span class="t">Hotel de la Poste</span><span class="s">5,5</span></div></div>
+      </div>
+      <div class="day">
+        <div class="day-head"><span class="day-num">08</span><span class="day-name">Sabato<small>Gennaio 2022</small></span></div>
+        <div class="match"><div class="match-tag">Finale 1&deg; posto</div>
+          <div class="match-row win"><span class="t">U.S. Polo Assn.</span><span class="s">14</span></div>
+          <div class="match-row "><span class="t">Goldspan</span><span class="s">11,5</span></div></div>
+        <div class="match"><div class="match-tag">Finale 3&deg; posto</div>
+          <div class="match-row win"><span class="t">Battistoni</span><span class="s">8</span></div>
+          <div class="match-row "><span class="t">Hotel de la Poste</span><span class="s">6</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="container">
+    <div class="section-head" data-anim>
+      <span class="eyebrow">Le squadre</span>
+      <h2>In campo.</h2>
+    </div>
+    <div class="teams" data-anim>
+      <div class="team-card">
+        <h3>U.S. Polo Assn.</h3>
+        <ul><li><div>Daniel Deistler<em>C</em></div><span>GER &middot; 0</span></li><li>Clement Delfosse<span>FRA &middot; 5</span></li><li>Patrick Maleitzke<span>GER &middot; 5</span></li></ul>
+      </div>
+      <div class="team-card">
+        <h3>Goldspan</h3>
+        <ul><li><div>Bert Poeckes<em>C</em></div><span>LUX &middot; 0</span></li><li>Pablo Guiñazú<span>ARG &middot; 3</span></li><li>Valentin Novillo Astrada<span>ARG &middot; 6</span></li></ul>
+      </div>
+      <div class="team-card">
+        <h3>Battistoni</h3>
+        <ul><li><div>Stefano Giansanti<em>C</em></div><span>ITA &middot; 1</span></li><li>Alexander Hauptmann<span>GER &middot; 2</span></li><li>Patricio Rattagan<span>ARG &middot; 4</span></li></ul>
+      </div>
+      <div class="team-card">
+        <h3>Hotel de la Poste</h3>
+        <ul><li><div>Martin Magal<em>C</em></div><span>SVK &middot; 0</span></li><li>Therence Cusmano<span>ITA &middot; 1</span></li><li>Felix Beguerie<span>ARG &middot; 5</span></li></ul>
+      </div>
+    </div>
+    <div class="legend"><em>C</em>Capitano &middot; nazionalit&agrave; &middot; numeri = handicap</div>
+  </div>
+</section>
+
+<section class="section" style="padding-bottom:0">
+  <div class="container">
+    <div class="section-head" data-anim>
+      <span class="eyebrow">Galleria</span>
+      <h2>Le immagini.</h2>
+    </div>
+  </div>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Prossima tappa: Courmayeur.</h2>
+    <p>27&ndash;30 gennaio 2027, snow polo in notturna ai piedi del Monte Bianco.</p>
+    <a href="circuito.html#courmayeur" class="btn btn-primary">Scopri la tappa</a><a href="circuito.html#archivio" class="btn btn-ghost">Tutte le edizioni</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-bottom">
+    <div class="footer-id"><a href="index.html"><img class="footer-logo" src="assets/loghi/ipc-white.svg" alt="Italia Polo Challenge"></a><span>© 2026 Italia Polo Challenge — The Chukker Company</span></div>
+    <a class="jd-credit" href="https://juridabiankov.com/" target="_blank" rel="noopener"><span>Design</span><img src="assets/loghi/jd-studio-white.png" alt="JD Studio"></a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Galleria foto">
+  <button class="lb-btn lb-close" aria-label="Chiudi">&times;</button>
+  <button class="lb-btn lb-prev" aria-label="Foto precedente">&lsaquo;</button>
+  <img alt="">
+  <button class="lb-btn lb-next" aria-label="Foto successiva">&rsaquo;</button>
+  <div class="lb-count"></div>
+</div>
+
+<script src="anim.js?v=1"></script>
+<script>
+  // Galleria: 20 foto + lightbox con frecce e tastiera
+  (() => {
+    const N = 20, dir = 'assets/foto/archivio/cortina-2022/';
+    const src = (i) => dir + 'g' + String(i).padStart(2, '0') + '.jpg';
+    const g = document.getElementById('gallery'), lb = document.getElementById('lb'), im = lb.querySelector('img'), ct = lb.querySelector('.lb-count');
+    let cur = 1;
+    for (let i = 1; i <= N; i++) {
+      const b = document.createElement('button'); b.setAttribute('aria-label', 'Apri foto ' + i);
+      b.innerHTML = '<img src="' + src(i) + '" alt="Fieracavalli 2026, foto ' + i + '" loading="lazy">';
+      b.addEventListener('click', () => show(i)); g.appendChild(b);
+    }
+    const show = (i) => { cur = (i + N - 1) % N + 1; im.src = src(cur); ct.textContent = cur + ' / ' + N; lb.classList.add('open'); document.body.style.overflow = 'hidden'; };
+    const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+    lb.querySelector('.lb-close').onclick = close;
+    lb.querySelector('.lb-prev').onclick = (e) => { e.stopPropagation(); show(cur - 1); };
+    lb.querySelector('.lb-next').onclick = (e) => { e.stopPropagation(); show(cur + 1); };
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1);
+    });
+  })();
+</script>
+</body>
+</html>
