@@ -122,6 +122,13 @@
   .team-card ul { list-style: none; margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); }
   .team-card li { display: flex; justify-content: space-between; gap: 10px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 14px; font-weight: 500; }
   .team-card li span { color: var(--mist); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; white-space: nowrap; }
+  .team-card li em { font-style: normal; display: inline-block; margin-left: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--ink); background: var(--mist); padding: 2px 5px; vertical-align: 1px; }
+  .team-card li em.mvp { background: var(--accent); }
+  .legend { margin-top: 22px; font-size: 12px; color: var(--mist); letter-spacing: 0.04em; }
+  .legend em { font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--ink); background: var(--mist); padding: 2px 5px; margin-right: 6px; }
+  .legend em.mvp { background: var(--accent); margin-left: 18px; }
+  .mvp-line { margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+  .mvp-line b { display: block; margin-top: 8px; font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: 0.01em; color: #fff; }
 
   /* ---------- Galleria ---------- */
   .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: #dcdad3; }
@@ -228,7 +235,7 @@
       <h2 data-anim>Tre serate di polo nel cuore di Fieracavalli.</h2>
       <div data-anim>
         <p>Per la 128ª edizione di Fieracavalli, la grande fiera internazionale del cavallo di Verona, l'Italia Polo Challenge ha portato il polo dentro i padiglioni: quattro squadre, tre giocatori per squadra, partite serrate in arena indoor davanti al pubblico della fiera.</p>
-        <p>Due incontri a sera dal 5 al 7 novembre, con le finali del sabato sera e la premiazione. A vincere il torneo è stata Courmayeur, imbattuta in tutte e tre le partite.</p>
+        <p>Due incontri a sera dal 5 al 7 novembre, con le finali del sabato sera e la premiazione. A vincere il torneo è stata Courmayeur, imbattuta in tutte e tre le partite; miglior giocatore Brieuc Rigaux.</p>
       </div>
     </div>
     <div class="stats" data-anim>
@@ -247,7 +254,8 @@
     <div class="eyebrow">Campioni 2026</div>
     <h2>Courmayeur</h2>
     <img class="champ-logo" src="assets/foto/archivio/fieracavalli-2026/loghi/courmayeur.png" alt="Courmayeur Mont Blanc">
-    <p>Tre vittorie su tre, 26 gol segnati e la finale vinta 14&ndash;8 contro Fieracavalli. In campo Fabrizio Facello, Therence Cusmano e Brieuc Rigaux.</p>
+    <p>Tre vittorie su tre, 26 gol segnati e la finale vinta 14&ndash;8 contro Fieracavalli. In campo il capitano Fabrizio Facello, Therence Cusmano e Brieuc Rigaux.</p>
+    <div class="mvp-line">Miglior giocatore del torneo<b>Brieuc Rigaux</b></div>
   </div>
 </section>
 
@@ -319,24 +327,25 @@
       <div class="team-card">
         <div class="tl"><img src="assets/foto/archivio/fieracavalli-2026/loghi/courmayeur.png" alt=""></div>
         <h3>Courmayeur</h3><div class="hcp">Handicap squadra 10</div>
-        <ul><li>Fabrizio Facello<span>ITA &middot; 1</span></li><li>Therence Cusmano<span>ITA &middot; 2</span></li><li>Brieuc Rigaux<span>FRA &middot; 7</span></li></ul>
+        <ul><li><div>Fabrizio Facello<em>C</em></div><span>ITA &middot; 1</span></li><li>Therence Cusmano<span>ITA &middot; 2</span></li><li><div>Brieuc Rigaux<em class="mvp">MVP</em></div><span>FRA &middot; 7</span></li></ul>
       </div>
       <div class="team-card">
         <div class="tl"><img src="assets/foto/archivio/fieracavalli-2026/loghi/fieracavalli.png" alt=""></div>
         <h3>Fieracavalli</h3><div class="hcp">Handicap squadra 9</div>
-        <ul><li>Mattia Orsi<span>ITA &middot; 1</span></li><li>Angel Valdez<span>DOM &middot; 3</span></li><li>Pedro Soria<span>ESP &middot; 5</span></li></ul>
+        <ul><li><div>Mattia Orsi<em>C</em></div><span>ITA &middot; 1</span></li><li>Angel Valdez<span>DOM &middot; 3</span></li><li>Pedro Soria<span>ESP &middot; 5</span></li></ul>
       </div>
       <div class="team-card">
         <div class="tl"><img src="assets/foto/archivio/fieracavalli-2026/loghi/falconeri.png" alt=""></div>
         <h3>Falconeri</h3><div class="hcp">Handicap squadra 8</div>
-        <ul><li>Ivan Romanovskiy<span>SKN &middot; 0</span></li><li>Misha Rodzianko<span>USA &middot; 3</span></li><li>Mattieu Delfosse<span>FRA &middot; 5</span></li></ul>
+        <ul><li><div>Ivan Romanovskiy<em>C</em></div><span>SKN &middot; 0</span></li><li>Misha Rodzianko<span>USA &middot; 3</span></li><li>Mattieu Delfosse<span>FRA &middot; 5</span></li></ul>
       </div>
       <div class="team-card">
         <div class="tl two"><img src="assets/foto/archivio/fieracavalli-2026/loghi/harpa.png" alt=""><img src="assets/foto/archivio/fieracavalli-2026/loghi/cave.png" alt=""></div>
-        <h3>Harpa &middot; Cave</h3><div class="hcp">Handicap squadra 8</div>
-        <ul><li>Denis Venturato<span>ITA &middot; 1</span></li><li>Fabrizio Bulgarini<span>ITA &middot; 2</span></li><li>Patricio Rattagan<span>ARG &middot; 5</span></li></ul>
+        <h3>Harpa &middot; Cave des Onze Communes</h3><div class="hcp">Handicap squadra 8</div>
+        <ul><li><div>Denis Venturato<em>C</em></div><span>ITA &middot; 1</span></li><li>Fabrizio Bulgarini<span>ITA &middot; 2</span></li><li>Patricio Rattagan<span>ARG &middot; 5</span></li></ul>
       </div>
     </div>
+    <div class="legend"><em>C</em>Capitano<em class="mvp">MVP</em>Miglior giocatore del torneo &middot; numeri = handicap</div>
   </div>
 </section>
 
