@@ -104,7 +104,12 @@
   }
   .archivio .eyebrow { color: #1C6E8C; margin-bottom: 14px; display: block; }
   .archivio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #e4e2dc; }
-  .archivio-card { position: relative; aspect-ratio: 4/3; overflow: hidden; color: #fff; }
+  .archivio-card { position: relative; aspect-ratio: 4/3; overflow: hidden; color: #fff; display: block; text-decoration: none; }
+  .archivio-card.featured { grid-column: 1 / -1; aspect-ratio: 21/8; }
+  .archivio-card.featured .archivio-body { padding: 40px; }
+  .archivio-card.featured .archivio-year { font-size: clamp(30px, 4vw, 56px); }
+  .archivio-cta { display: inline-block; margin-top: 16px; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; border-bottom: 1px solid #A8895E; padding-bottom: 4px; }
+  .archivio-tag { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #A8895E; margin-bottom: 10px; }
   .archivio-card img {
     width: 100%; height: 100%; object-fit: cover;
     transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
@@ -146,11 +151,14 @@
     .tappa-media { height: 60vw; }
     .tappa-copy { padding: 56px 32px; }
     .archivio-grid { grid-template-columns: repeat(2, 1fr); }
+    .archivio-card.featured { aspect-ratio: 16/9; }
   }
   @media (max-width: 560px) {
     .page-hero { padding: 140px 0 60px; }
     .tappa-copy .tappa-meta { flex-direction: column; gap: 16px; }
     .archivio-grid { grid-template-columns: 1fr; }
+    .archivio-card.featured { aspect-ratio: 4/3; }
+    .archivio-card.featured .archivio-body { padding: 24px; }
   }
 </style>
 <link rel="stylesheet" href="anim.css?v=3">
@@ -263,7 +271,7 @@
   </div>
 </section>
 
-<section class="archivio">
+<section class="archivio" id="archivio">
   <div class="container">
     <div class="section-head">
       <div>
@@ -274,6 +282,15 @@
   </div>
   <div class="container">
     <div class="archivio-grid">
+      <a class="archivio-card featured" href="fieracavalli-2026.html">
+        <img src="assets/foto/archivio/fieracavalli-2026.jpg" alt="Fieracavalli 2026">
+        <div class="archivio-body">
+          <span class="archivio-tag">Campioni: Courmayeur</span>
+          <div class="archivio-year">Fieracavalli 2026</div>
+          <div class="archivio-place">Verona &middot; Polo indoor &middot; 5&ndash;7 novembre</div>
+          <span class="archivio-cta">Risultati, foto e aftermovie &rarr;</span>
+        </div>
+      </a>
       <div class="archivio-card">
         <img src="assets/foto/archivio/cortina-2020.jpg" alt="Cortina 2020">
         <div class="archivio-body">
